@@ -51,7 +51,7 @@ contains
     ! ------------------------------------------------------------------------
 
     do g = 1, total_gridcells
-       dispersal_global_domain_mype(g) = 10*myproc
+       dispersal_global_domain_mype(g) = 100*myproc + g
     end do
 
     ! Format assumes 3 grid cells per proc, 4 procs
