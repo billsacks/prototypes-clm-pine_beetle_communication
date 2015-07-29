@@ -12,9 +12,6 @@ module pine_beetles_mod
   integer :: myproc
   integer :: total_gridcells
 
-  ! The data of interest
-  integer :: my_beetles(gridcells_per_proc)
-
 contains
 
   subroutine init_gridcells
@@ -25,12 +22,6 @@ contains
     call mpi_comm_rank(MPI_COMM_WORLD, myproc, error)
     total_gridcells = gridcells_per_proc * nprocs
 
-    do g = 1, gridcells_per_proc
-       my_beetles(g) = 100*myproc + g
-    end do
-
-    ! Format assumes 3 grid cells per proc
-    write(*,'("Initial beetles: Proc ", i0, ": ", 3i4)') myproc, my_beetles
   end subroutine init_gridcells
 
   ! ========================================================================
